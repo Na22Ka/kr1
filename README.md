@@ -1,7 +1,2 @@
-# Мой первый проект
-
-## Проект
-Этот репозиторий является каркасом для будущего веб-приложения.
-
-## Ссылки
-- [Публичная страница на GitHub Pages](https://na22ka.github.io/kr1/index.html)
+[# frontend-and-backend-practice
+](https://Na22Ka.github.io/kr1/index.html)
