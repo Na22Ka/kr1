@@ -4,4 +4,4 @@
 Этот репозиторий является каркасом для будущего веб-приложения.
 
 ## Ссылки
-- [Публичная страница на GitHub Pages](https://na22ka.github.io/kr1/)
+- [Публичная страница на GitHub Pages](https://na22ka.github.io/kr1/index.html)
