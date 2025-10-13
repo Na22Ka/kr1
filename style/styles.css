@@ -1,389 +1,329 @@
-/* ===== БАЗОВЫЕ СТИЛИ ===== */
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт для лучшей читаемости */
-    margin: 0; /* Убираем стандартные отступы браузера */
-    padding: 0; /* Убираем стандартные внутренние отступы */
-    background: linear-gradient(135deg, #6e5b7999 0%, #6b4b8ca9 100%); /* Красивый градиентный фон всей страницы */
-    min-height: 100vh; /* Минимальная высота равна высоте окна браузера */
+:root {
+  /* Фиолетовая цветовая палитра */
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-500: #a855f7;
+  --purple-600: #9333ea;
+  --purple-700: #7c3aed;
+  --purple-800: #6b21a8;
+  --purple-900: #581c87;
+  --purple-1000: #301744db;
+  
+  /* Дополнительные цвета */
+  --pink-500: #c3e36de9;
+  --indigo-500: #10b981;
+  --blue-500: #3b82f6;
+  --teal-500: #14b8a6;
+  --emerald-500: #0c0fb5d6;
+  
+  /* Нейтральные цвета */
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+  --black: #000000;
+  
+  /* Основные цвета темы */
+  --color-primary: var(--purple-600);
+  --color-primary-light: var(--purple-400);
+  --color-primary-dark: var(--purple-800);
+  --color-secondary: var(--pink-500);
+  --color-accent: var(--indigo-500);
+  --color-success: var(--emerald-500);
+  --color-warning: #f59f0bda;
+  --color-error: #f95252e3;
+  --color-info: var(--blue-500);
+  
+  /* Фоновые цвета */
+  --bg-primary: var(--white);
+  --bg-secondary: var(--gray-50);
+  --bg-tertiary: var(--gray-100);
+  --bg-dark: var(--gray-900);
+  
+  /* Текстовые цвета */
+  --text-primary: var(--gray-900);
+  --text-secondary: var(--gray-600);
+  --text-tertiary: var(--gray-400);
+  --text-light: var(--white);
+  --text-inverse: var(--white);
+  
+  /* Градиенты */
+  --gradient-primary: linear-gradient(135deg, var(--purple-600), var(--pink-500));
+  --gradient-secondary: linear-gradient(135deg, var(--purple-500), var(--indigo-500));
+  --gradient-dark: linear-gradient(135deg, var(--purple-800), var(--gray-900));
+  --gradient-light: linear-gradient(135deg, var(--purple-100), var(--pink-100));
+  
+  /* Тени */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  
+  /* Скругления */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Отступы */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  
+  /* Анимации */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  
+  /* Типографика */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  /* Максимальные ширины */
+  --max-width-sm: 640px;
+  --max-width-md: 768px;
+  --max-width-lg: 1024px;
+  --max-width-xl: 1280px;
+  --max-width-2xl: 1536px;
 }
 
-/* ===== КОНТЕЙНЕР СТРАНИЦЫ ===== */
-.page-container {
-    max-width: 1200px; /* Максимальная ширина контента */
-    margin: 0 auto; /* Центрирование контейнера по горизонтали */
-    background: white; /* Белый фон для основного содержимого */
-    min-height: 100vh; /* Минимальная высота равна высоте окна браузера */
-    box-shadow: 0 0 30px rgba(0,0,0,0.1); /* Легкая тень вокруг всего контента */
+/* ===== ТЕМНАЯ ТЕМА ===== */
+[data-theme="dark"] {
+  --bg-primary: var(--gray-900);
+  --bg-secondary: var(--gray-800);
+  --bg-tertiary: var(--gray-700);
+  --text-primary: var(--white);
+  --text-secondary: var(--gray-300);
+  --text-tertiary: var(--gray-400);
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== ШАПКА ===== */
-.header {
-    background: linear-gradient(135deg, #764e7e 0%, #2d264c 100%); /* Темный градиентный фон */
-    color: white; /* Белый цвет текста */
-    text-align: center; /* Выравнивание текста по центру */
-    padding: 30px; /* Внутренние отступы со всех сторон */
-    font-size: 35px; /* Размер шрифта */
-    font-weight: 400; /* Легкое начертание шрифта */
-    letter-spacing: 2px; /* Расстояние между буквами */
+/* ===== ПЕРЕОПРЕДЕЛЕНИЕ BOOTSTRAP ДЛЯ ФИОЛЕТОВОЙ ТЕМЫ ===== */
+
+/* Основные цвета */
+.bg-primary {
+    background: var(--gradient-primary) !important;
 }
 
-/* ===== НАВИГАЦИЯ ===== */
-.nav {
-    background: #332949; /* Темно-синий фон навигации */
-    padding: 20px 0; /* Вертикальные отступы */
+.bg-dark {
+    background: var(--purple-1000) !important;
 }
 
-.nav-list {
-    list-style: none; /* Убираем маркеры списка */
-    margin: 0; /* Убираем внешние отступы */
-    padding: 0; /* Убираем внутренние отступы */
-    display: flex; /* Горизонтальное расположение элементов */
-    justify-content: center; /* Выравнивание по центру */
-    gap: 35px; /* Расстояние между элементами навигации */
+.bg-success { background: var(--emerald-500) !important; }
+.bg-info { background: var(--indigo-500) !important; }
+.bg-warning { background: var(--color-warning) !important; }
+.bg-danger { background: var(--color-error) !important; }
+.bg-light { background: var(--gray-50) !important; }
+
+/* Текстовые цвета */
+.text-primary { color: var(--purple-800) !important; }
+.text-success { color: var(--emerald-500) !important; }
+.text-info { color: var(--indigo-500) !important; }
+.text-warning { color: var(--color-warning) !important; }
+.text-danger { color: var(--color-error) !important; }
+.text-muted { color: var(--gray-500) !important; }
+
+
+/* Кнопки */
+.btn-primary {
+    background: var(--gradient-primary) !important;
+    border: none !important;
+    border-radius: var(--radius-lg) !important;
+    transition: all var(--transition-normal) !important;
 }
 
-.nav-item {
-    margin: 0; /* Убираем отступы у пунктов меню */
+.btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: var(--shadow-lg) !important;
+}
+
+.btn-success { background: var(--emerald-500) !important; border: none !important; }
+.btn-info { background: var(--indigo-500) !important; border: none !important; }
+.btn-warning { background: var(--color-warning) !important; border: none !important; }
+.btn-danger { background: var(--color-error) !important; border: none !important; }
+
+/* Навигация */
+.navbar-dark {
+    background: var(--purple-1000) !important;
 }
 
 .nav-link {
-    color: white; /* Белый цвет текста ссылок */
-    text-decoration: none; /* Убираем подчеркивание ссылок */
-    padding: 12px 25px; /* Отступы внутри ссылок */
-    border-radius: 25px; /* Скругленные углы (капсульная форма) */
-    transition: all 0.3s ease; /* Плавные анимации при изменении */
-    font-weight: 500; /* Средняя жирность шрифта */
+    border-radius: var(--radius-md) !important;
+    transition: all var(--transition-normal) !important;
+    margin: var(--space-xs) !important;
 }
 
 .nav-link:hover {
-    background: rgba(193, 163, 223, 0.143); /* Полупрозрачный белый фон при наведении */
-    transform: translateY(-2px); /* Легкое поднятие элемента при наведении */
+    background: var(--purple-700) !important;
+    transform: translateY(-2px) !important;
 }
 
-/* ===== ОСНОВНОЙ КОНТЕНТ ===== */
-main.content {
-    padding: 40px; /* Внутренние отступы контента */
-    max-width: 900px; /* Максимальная ширина контента */
-    margin: 0 auto; /* Центрирование контента */
-    /* Новое: Привязка к области сетки */
-    grid-area: main;
+.nav-link.active {
+    background: var(--purple-900) !important;
+    font-weight: 600 !important;
 }
 
-/* ===== ГЛАВНАЯ СТРАНИЦА ===== */
-.profile-header {
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 40px; /* Отступ снизу */
+/* Карточки */
+.card {
+    border-radius: var(--radius-xl) !important;
+    border: 1px solid var(--gray-200) !important;
+    transition: all var(--transition-normal) !important;
+    box-shadow: var(--shadow-md) !important;
 }
 
-.profile-title {
-    font-size: 32px; /* Размер шрифта заголовка */
-    color: #292851; /* Темно-синий цвет текста */
-    margin-bottom: 10px; /* Отступ снизу */
-    font-weight: 300; /* Легкое начертание шрифта */
+.card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: var(--shadow-xl) !important;
 }
 
-.profile-photo {
-    width: 300px; /* Фиксированная ширина фото */
-    height: 350px; /* Фиксированная высота фото */
-    border-radius: 15px; /* Скругленные углы фото */
-    object-fit: cover; /* Обрезка фото для сохранения пропорций */
-    margin: 20px auto; /* Центрирование и отступы */
-    border: 4px solid #8966ea; /* Синяя рамка вокруг фото */
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3); /* Тень с синим оттенком */
+.card-header {
+    border-radius: var(--radius-xl) var(--radius-xl) 0 0 !important;
 }
 
-.profile-name {
-    font-size: 24px; /* Размер шрифта имени */
-    color: #302c50de; /* Темно-синий цвет текста */
-    margin: 10px 0; /* Вертикальные отступы */
-    font-weight: 500; /* Средняя жирность шрифта */
+/* Badges */
+.badge {
+    border-radius: var(--radius-full) !important;
+    font-weight: 500 !important;
 }
 
-.profile-group {
-    font-size: 18px; /* Размер шрифта группы */
-    color: #604474c4; /* Серый цвет текста */
-    margin: 5px 0; /* Вертикальные отступы */
+.badge.bg-primary { background: var(--gradient-primary) !important; }
+.badge.bg-success { background: var(--emerald-500) !important; }
+.badge.bg-info { background: var(--indigo-500) !important; }
+.badge.bg-warning { background: var(--color-warning) !important; }
+.badge.bg-light { 
+    background: var(--white) !important; 
+    color: var(--purple-600) !important;
 }
 
-.about-me {
-    background: linear-gradient(135deg, #ebebf0d1 0%, #c6bde0ad 100%); /* Светлый градиентный фон */
-    padding: 25px; /* Внутренние отступы */
-    border-radius: 15px; /* Скругленные углы */
-    margin: 30px 0; /* Вертикальные отступы */
-    border-left: 5px solid #6656c0bd; /* Синяя полоса слева */
-    font-size: 16px; /* Размер шрифта текста */
-    line-height: 1.8; /* Межстрочный интервал */
+/* Прогресс-бары */
+.progress {
+    border-radius: var(--radius-full) !important;
+    background: var(--gray-200) !important;
+    height: 10px !important;
 }
 
-/* ===== НАВЫКИ ===== */
-/* ИЗМЕНЕНИЕ: Добавили CSS Grid для навыков */
-
-.skills-section-title{
-    text-align: center; /* Выравнивание по центру */
-    font-weight: 500;
-    color: #302c50de; 
+.progress-bar {
+    border-radius: var(--radius-full) !important;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin: 20px 0;
+.progress-bar.bg-primary { background: var(--gradient-primary) !important; }
+.progress-bar.bg-success { background: var(--emerald-500) !important; }
+.progress-bar.bg-info { background: var(--indigo-500) !important; }
+.progress-bar.bg-warning { background: var(--color-warning) !important; }
+
+/* Формы */
+.form-control, .form-select {
+    border-radius: var(--radius-lg) !important;
+    border: 2px solid var(--gray-300) !important;
+    transition: all var(--transition-normal) !important;
 }
 
-.skill-tag {
-    background: linear-gradient(135deg, #6a2f88 0%, #dda3e4 100%); /* Голубой градиентный фон */
-    color: white;
-    padding: 12px 25px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: 0 4px 15px rgba(79, 172, 254, 0.3);
-    transition: all 0.3s ease;
-    text-align: center;
+.form-control:focus, .form-select:focus {
+    border-color: var(--purple-500) !important;
+    box-shadow: 0 0 0 0.2rem rgba(168, 85, 247, 0.25) !important;
+    transform: translateY(-2px) !important;
 }
 
-.skill-tag:hover {
-    transform: translateY(-3px); /* Поднятие элемента при наведении */
-    box-shadow: 0 6px 20px rgba(144, 56, 171, 0.764); /* Увеличение тени при наведении */
+/* Пагинация */
+.pagination .page-link {
+    border-radius: var(--radius-lg) !important;
+    transition: all var(--transition-normal) !important;
 }
 
-/* ===== ОПЫТ РАБОТЫ ===== */
-.experience-section {
-    margin-top: 50px; /* Отступ сверху */
+.pagination .page-link:hover {
+    transform: translateY(-2px) !important;
 }
 
-.section-title {
-    font-size: 28px; /* Размер шрифта заголовка секции */
-    color: #3e234a; /* Темно-синий цвет текста */
-    text-align: center; /* Выравнивание по центру */
-    margin-bottom: 30px; /* Отступ снизу */
-    font-weight: 300; /* Легкое начертание шрифта */
+.pagination .page-item.active .page-link {
+    background: var(--gradient-primary) !important;
+    border-color: var(--purple-500) !important;
 }
 
-.experience-card {
-    background: rgba(222, 217, 228, 0.735); /* Белый фон карточки */
-    padding: 25px; /* Внутренние отступы */
-    margin: 20px 0; /* Вертикальные отступы */
-    border-radius: 12px; /* Скругленные углы */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Легкая тень */
-    border-left: 4px solid #6f4ca2bb; /* Синяя полоса слева */
-    transition: transform 0.3s ease; /* Плавная анимация трансформации */
+/* Alert */
+.alert {
+    border-radius: var(--radius-lg) !important;
+    border: none !important;
 }
 
-.experience-card:hover {
-    transform: translateX(5px); /* Сдвиг вправо при наведении */
+.alert-primary {
+    background: var(--purple-50) !important;
+    color: var(--purple-800) !important;
 }
 
-.experience-title {
-    font-size: 20px; /* Размер шрифта заголовка опыта */
-    color: #402044; /* Темно-синий цвет текста */
-    margin: 0 0 10px 0; /* Отступ снизу */
-    font-weight: 600; /* Жирный шрифт */
+/* Таблицы */
+.table {
+    border-radius: var(--radius-lg) !important;
+    overflow: hidden !important;
 }
 
-.experience-desc {
-    color: #635f6cb5; /* Серый цвет текста */
-    line-height: 1.6; /* Межстрочный интервал */
-    margin: 0; /* Убираем отступы */
+.table th {
+    background: var(--purple-50) !important;
+    border-color: var(--gray-200) !important;
 }
 
-/* ===== ФУТЕР ===== */
-.footer {
-    font-weight: 500;
-    background: linear-gradient(135deg, #351e5e 0%, #78538a 100%); /* Темный градиентный фон */
-    color: rgb(255, 255, 255); /* Белый цвет текста */
-    text-align: center; /* Выравнивание по центру */
-    padding: 30px; /* Внутренние отступы */
-    margin-top: 50px; /* Отступ сверху */
-}
-.news-section {
-    margin-top: 25px; /* Отступ сверху */
+/* Accordion */
+.accordion-button {
+    border-radius: var(--radius-lg) !important;
+    transition: all var(--transition-normal) !important;
 }
 
-.news-section-title {
-    text-align: center; /* Выравнивание по центру */
-    font-weight: 400;
-    color: #302c50de; 
+.accordion-button:not(.collapsed) {
+    background: var(--purple-50) !important;
+    color: var(--purple-700) !important;
 }
 
-.news-title {
-    font-size: 20px; /* Размер шрифта заголовка секции */
-    color: #3e234a; /* Темно-синий цвет текста */
-    margin-bottom: 30px; /* Отступ снизу */
-    font-weight: 450; /* Легкое начертание шрифта */
+/* Модальные окна */
+.modal-content {
+    border-radius: var(--radius-xl) !important;
+    border: none !important;
+    box-shadow: var(--shadow-2xl) !important;
 }
 
-.news-card {
-    background: rgba(222, 217, 228, 0.735); /* Белый фон карточки */
-    padding: 20px; /* Внутренние отступы */
-    margin: 20px auto; /* Вертикальные отступы */
-    max-width: 900px;  /* ограничиваем ширину */
-    width: 100%;       /* но позволяем сужаться на мобильных */
-    border-radius: 12px; /* Скругленные углы */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08); /* Легкая тень */
-    border-left: 5px solid #6f4ca2bb; /* Синяя полоса слева */
-    transition: transform 0.3s ease; /* Плавная анимация трансформации */
+/* Иконки Bootstrap */
+.bi {
+    transition: transform var(--transition-normal) !important;
 }
 
-.news-card:hover {
-    transform: translateX(5px); /* Сдвиг вправо при наведении */
+.nav-link:hover .bi {
+    transform: scale(1.2) !important;
 }
 
-.news-desc {
-    color: #59526ade; /* Серый цвет текста */
-    line-height: 1.6; /* Межстрочный интервал */
-    margin: 0; /* Убираем отступы */
-}
-/* .goods-section{
-    display: grid;
-    gap: 20px;
-} */
-.section-title{
-    text-align: center;
-}
-.goods-container{
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(2, 1fr);
-    justify-items: stretch;
-    /* justify-items: center;  */
-    /* grid-template-columns: repeat(2, 1fr); */
-    /* justify-items: stretch; карточки растягиваются на всю ширину колонки */
-    
-}
-.section-description{
-    text-align: center;
-}
-.goods-card {
-    width: 100%; /* вместо фиксированной ширины */
-    max-width: 500px; /* ограничение, если нужно */
-    margin: 0 auto; /* центрирование внутри колонки */
-    background: rgb(205, 200, 206);
-    padding: 25px;
-    padding-left: 0px;
-    padding-right: 0px;
-    border-radius: 15px;
-    text-align: center;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease;
-}
-.goods-card:hover {
-    transform: translateY(5px);
-}
-.goods-video {
-    width: 100%;
-    height: auto;
-    max-height: 370px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid #f8f9fa;
-}
-.goods-image{
-    width: 100%;
-    height: auto;
-    max-height: 370px;
-    border-radius: 10px;
-    object-fit: cover;
-    margin-bottom: 20px;
-    border: 3px solid #f8f9fa;
-
-}
-.goods-name {
-    font-size: 18px;
-    color: #191a3c;
-    margin: 10px 0;
-    font-weight: 600;
-}
-.goods-price {
-    font-size: 20px;
-    color: #241d6fb2;
-    font-weight: 700;
-    margin: 5px 0;
-}
-.goods-button{
-    background: linear-gradient(135deg, #121e54 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 16px;
-    border-radius: 30px;
-    margin-top: 20px;
-    font-weight: 600;
-    transition: all 0.3s ease;
+/* Тени для контейнеров */
+.container, .container-fluid {
+    box-shadow: none !important;
 }
 
-.contact-info {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 15px;
-    font-size: 18px;
-    color: #2c3e50;
-}
+/* Убираем стандартные тени Bootstrap */
+.shadow-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow { box-shadow: var(--shadow-md) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
 
-.contact-button {
-    background: linear-gradient(135deg, #121e54 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    font-size: 16px;
-    border-radius: 30px;
-    cursor: pointer;
-    margin-top: 20px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-}
-.contact-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-}
-
-
-
-@media (max-width: 1200px) {
-    .goods-container {
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: stretch;
-    }
-    .goods-card {
-        margin: 0; 
-        max-width: none;
-    }
-    .news-card {
-        padding: 15px;
-        width: 85%; 
-        max-width: none; 
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-list {
-        text-align: center;
-        flex-direction: column;
-        gap: 20px;
-    }
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .experience-grid {
-        grid-template-columns: 1fr;
-    }
-    .goods-container {
-    grid-template-columns: 1fr; /* одна колонка */
-}
-    .goods-image{
-        width: 100%; /* уже должно быть, но для уверенности */
-        height: auto;
-        max-height: 250px; /* можно уменьшить высоту на мобильных */
-        border-radius: 8px; /* можно чуть уменьшить радиус для мобильных */
-    }
-    .goods-video{
-        width: 100%; /* уже должно быть, но для уверенности */
-        height: auto;
-        max-height: 250px; /* можно уменьшить высоту на мобильных */
-        border-radius: 8px; /* можно чуть уменьшить радиус для мобильных */
-    }
+/* Анимации для всех интерактивных элементов */
+.btn, .card, .nav-link, .form-control, .progress-bar {
+    transition: all var(--transition-normal) !important;
 }
