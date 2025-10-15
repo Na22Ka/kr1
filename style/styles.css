@@ -474,3 +474,36 @@ body.bg-light {
 .btn, .card, .nav-link, .form-control, .progress-bar {
     transition: all var(--transition-normal) !important;
 }
+
+/* ===== ЛОГОТИП ===== */
+.logo-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-normal);
+}
+
+.logo-img:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: var(--shadow-md);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 576px) {
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    header h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    header p {
+        font-size: 0.9rem !important;
+    }
+}
