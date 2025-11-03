@@ -13,51 +13,47 @@
             transition: transform 0.3s ease;
             height: 100%;
         }
-        .contact-card:hover {
+        .contact-card:focus-within {
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         }
         .social-link {
             transition: all 0.3s ease;
             text-decoration: none;
         }
-        .social-link:hover {
+        .social-link:focus {
             transform: translateY(-2px);
+            outline: 2px solid var(--color-primary);
         }
-        .map-container {
-            height: 400px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
+        
+        /* Улучшенные стили доступности */
+        .form-label .required {
+            color: var(--color-error);
         }
-        .map-overlay {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 300px;
+        .error-message {
+            color: var(--color-error);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
         }
-        .form-section {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .form-control:invalid + .error-message {
+            display: block;
+        }
+        .contact-card:focus {
+            outline: 2px solid var(--color-primary);
         }
     </style>
 </head>
 <body class="bg-light">
     <div class="container-fluid p-0">
-       <!-- Header -->
+        <!-- Header - уже хорошо реализован -->
         <header class="bg-primary text-white py-3">
             <div class="container">
                 <div class="row align-items-center">
-                    <!-- Логотип и название -->
                     <div class="col-auto">
                         <div class="d-flex align-items-center">
                             <a href="../index.html" class="text-decoration-none">
-                                <img src="../images/logo/logo1.png" alt="Логотип" class="logo-img me-3">
+                                <img src="../images/logo/logo1.png" alt="Логотип компании - переход на главную страницу" class="logo-img me-3">
                             </a>
                             <div>
                                 <h1 class="h4 mb-1">Свяжитесь с нами</h1>
@@ -65,8 +61,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Бейдж группы -->
                     <div class="col-auto ms-auto">
                         <span class="badge bg-light text-primary">ЭФБО-11-24</span>
                     </div>
@@ -75,46 +69,42 @@
         </header>
 
         <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Основная навигация" role="navigation">
             <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Переключить навигацию">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="../index.html">
-                                <i class="bi bi-house me-2"></i>Главная
+                    <ul class="navbar-nav me-auto" role="menubar">
+                        <li class="nav-item" role="none">
+                            <a class="nav-link" href="../index.html" role="menuitem">
+                                <i class="bi bi-house me-2" aria-hidden="true"></i>Главная
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="news.html">
-                                <i class="bi bi-newspaper me-2"></i>Новости
+                        <li class="nav-item" role="none">
+                            <a class="nav-link" href="news.html" role="menuitem">
+                                <i class="bi bi-newspaper me-2" aria-hidden="true"></i>Новости
                             </a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link" href="practices.html">
-                                <i class="bi bi-code-slash me-2"></i>Практики
-                            </a>
-                        </li> -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="goods.html">
-                                <i class="bi bi-cart me-2"></i>Товары
+                        <li class="nav-item" role="none">
+                            <a class="nav-link" href="goods.html" role="menuitem">
+                                <i class="bi bi-cart me-2" aria-hidden="true"></i>Товары
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="contacts.html">
-                                <i class="bi bi-telephone me-2"></i>Контакты
+                        <li class="nav-item" role="none">
+                            <a class="nav-link active" href="contacts.html" aria-current="page" role="menuitem">
+                                <i class="bi bi-telephone me-2" aria-hidden="true"></i>Контакты
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="projects.html">
-                                <i class="bi bi-folder me-1"></i>Проекты
+                        <li class="nav-item" role="none">
+                            <a class="nav-link" href="projects.html" role="menuitem">
+                                <i class="bi bi-folder me-1" aria-hidden="true"></i>Проекты
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="diary.html">
-                                <i class="bi bi-journal-text me-1"></i>Дневник
+                        <li class="nav-item" role="none">
+                            <a class="nav-link" href="diary.html" role="menuitem">
+                                <i class="bi bi-journal-text me-1" aria-hidden="true"></i>Дневник
                             </a>
                         </li>
                     </ul>
@@ -125,24 +115,29 @@
         <!-- Main Content -->
         <main class="container my-4">
             <!-- Contact Info Section -->
-            <section class="mb-5">
+            <section class="mb-5" aria-labelledby="contact-heading">
+                <h2 id="contact-heading" class="sr-only">Контактная информация</h2>
+                
                 <div class="row">
                     <div class="col-lg-8">
-                        <h2 class="text-primary mb-4">Наши контакты</h2>
+                        <h3 class="text-primary mb-4">Наши контакты</h3>
                         
                         <div class="row g-4">
                             <!-- Email -->
                             <div class="col-md-6">
-                                <div class="card contact-card border-primary h-100">
+                                <div class="card contact-card border-primary h-100" tabindex="0">
                                     <div class="card-body">
                                         <div class="d-flex align-items-start mb-3">
-                                            <i class="bi bi-envelope-fill text-primary fs-3 me-3"></i>
+                                            <i class="bi bi-envelope-fill text-primary fs-3 me-3" aria-hidden="true"></i>
                                             <div>
-                                                <h5 class="card-title">Электронная почта</h5>
+                                                <h4 class="card-title h5">Электронная почта</h4>
                                                 <p class="card-text text-muted mb-2">anastasiiakamyshnaia@gmail.com</p>
-                                                <button class="btn btn-primary btn-sm" onclick="copyToClipboard('anastasiiakamyshnaia@gmail.com')">
-                                                    <i class="bi bi-clipboard me-1"></i>Скопировать
+                                                <button class="btn btn-primary btn-sm" onclick="copyToClipboard('anastasiiakamyshnaia@gmail.com')" aria-describedby="email-copy-desc">
+                                                    <i class="bi bi-clipboard me-1" aria-hidden="true"></i>Скопировать
                                                 </button>
+                                                <div id="email-copy-desc" class="sr-only">
+                                                    Копирует email адрес в буфер обмена
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -151,16 +146,19 @@
 
                             <!-- Address -->
                             <div class="col-md-6">
-                                <div class="card contact-card h-100">
+                                <div class="card contact-card h-100" tabindex="0">
                                     <div class="card-body">
                                         <div class="d-flex align-items-start mb-3">
-                                            <i class="bi bi-geo-alt-fill text-success fs-3 me-3"></i>
+                                            <i class="bi bi-geo-alt-fill text-success fs-3 me-3" aria-hidden="true"></i>
                                             <div>
-                                                <h5 class="card-title">Физический адрес</h5>
+                                                <h4 class="card-title h5">Физический адрес</h4>
                                                 <p class="card-text text-muted mb-2">г. Москва, ул. Пушкина, д. Колотушкина</p>
-                                                <button class="btn btn-outline-success btn-sm" onclick="showOnMap()">
-                                                    <i class="bi bi-map me-1"></i>Показать на карте
+                                                <button class="btn btn-outline-success btn-sm" onclick="showOnMap()" aria-describedby="map-desc">
+                                                    <i class="bi bi-map me-1" aria-hidden="true"></i>Показать на карте
                                                 </button>
+                                                <div id="map-desc" class="sr-only">
+                                                    Открывает карту с нашим местоположением
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -169,16 +167,19 @@
 
                             <!-- Phone -->
                             <div class="col-md-6">
-                                <div class="card contact-card h-100">
+                                <div class="card contact-card h-100" tabindex="0">
                                     <div class="card-body">
                                         <div class="d-flex align-items-start mb-3">
-                                            <i class="bi bi-telephone-fill text-info fs-3 me-3"></i>
+                                            <i class="bi bi-telephone-fill text-info fs-3 me-3" aria-hidden="true"></i>
                                             <div>
-                                                <h5 class="card-title">Телефон</h5>
+                                                <h4 class="card-title h5">Телефон</h4>
                                                 <p class="card-text text-muted mb-2">+7 (875) 373-95-27</p>
-                                                <button class="btn btn-outline-info btn-sm" onclick="makeCall('+78753739527')">
-                                                    <i class="bi bi-telephone-outbound me-1"></i>Позвонить
+                                                <button class="btn btn-outline-info btn-sm" onclick="makeCall('+78753739527')" aria-describedby="call-desc">
+                                                    <i class="bi bi-telephone-outbound me-1" aria-hidden="true"></i>Позвонить
                                                 </button>
+                                                <div id="call-desc" class="sr-only">
+                                                    Инициирует телефонный звонок по указанному номеру
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -187,12 +188,12 @@
 
                             <!-- Working Hours -->
                             <div class="col-md-6">
-                                <div class="card contact-card h-100">
+                                <div class="card contact-card h-100" tabindex="0">
                                     <div class="card-body">
                                         <div class="d-flex align-items-start mb-3">
-                                            <i class="bi bi-clock-fill text-warning fs-3 me-3"></i>
+                                            <i class="bi bi-clock-fill text-warning fs-3 me-3" aria-hidden="true"></i>
                                             <div>
-                                                <h5 class="card-title">Время работы</h5>
+                                                <h4 class="card-title h5">Время работы</h4>
                                                 <p class="card-text text-muted mb-1">Пн-Пт: 9:00-18:00</p>
                                                 <p class="card-text text-muted small">Сб-Вс: выходной</p>
                                             </div>
@@ -205,43 +206,43 @@
                         <!-- Social Links -->
                         <div class="card mt-4">
                             <div class="card-body">
-                                <h5 class="card-title text-center mb-4">Мы в социальных сетях</h5>
-                                <div class="row g-3">
-                                    <div class="col-6 col-md-3">
-                                        <a href="#" class="social-link text-decoration-none">
+                                <h4 class="card-title text-center mb-4">Мы в социальных сетях</h4>
+                                <div class="row g-3" role="list">
+                                    <div class="col-6 col-md-3" role="listitem">
+                                        <a href="#" class="social-link text-decoration-none" aria-label="Наша страница ВКонтакте">
                                             <div class="card text-center border-0 bg-light">
                                                 <div class="card-body py-3">
-                                                    <i class="bi bi-vimeo text-primary fs-2"></i>
+                                                    <i class="bi bi-vimeo text-primary fs-2" aria-hidden="true"></i>
                                                     <p class="mb-0 small mt-2">VK</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-6 col-md-3">
-                                        <a href="#" class="social-link text-decoration-none">
+                                    <div class="col-6 col-md-3" role="listitem">
+                                        <a href="#" class="social-link text-decoration-none" aria-label="Наш Telegram канал">
                                             <div class="card text-center border-0 bg-light">
                                                 <div class="card-body py-3">
-                                                    <i class="bi bi-telegram text-info fs-2"></i>
+                                                    <i class="bi bi-telegram text-info fs-2" aria-hidden="true"></i>
                                                     <p class="mb-0 small mt-2">Telegram</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-6 col-md-3">
-                                        <a href="#" class="social-link text-decoration-none">
+                                    <div class="col-6 col-md-3" role="listitem">
+                                        <a href="#" class="social-link text-decoration-none" aria-label="Чат в WhatsApp">
                                             <div class="card text-center border-0 bg-light">
                                                 <div class="card-body py-3">
-                                                    <i class="bi bi-whatsapp text-success fs-2"></i>
+                                                    <i class="bi bi-whatsapp text-success fs-2" aria-hidden="true"></i>
                                                     <p class="mb-0 small mt-2">WhatsApp</p>
                                                 </div>
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-6 col-md-3">
-                                        <a href="#" class="social-link text-decoration-none">
+                                    <div class="col-6 col-md-3" role="listitem">
+                                        <a href="#" class="social-link text-decoration-none" aria-label="Наш GitHub репозиторий">
                                             <div class="card text-center border-0 bg-light">
                                                 <div class="card-body py-3">
-                                                    <i class="bi bi-github text-dark fs-2"></i>
+                                                    <i class="bi bi-github text-dark fs-2" aria-hidden="true"></i>
                                                     <p class="mb-0 small mt-2">GitHub</p>
                                                 </div>
                                             </div>
@@ -254,27 +255,46 @@
 
                     <!-- Contact Form -->
                     <div class="col-lg-4">
-                        <div class="form-section p-4 h-100">
-                            <h3 class="text-primary mb-3">Форма обратной связи</h3>
+                        <div class="form-section p-4 h-100" role="form" aria-labelledby="form-heading">
+                            <h3 id="form-heading" class="text-primary mb-3">Форма обратной связи</h3>
                             <p class="text-muted mb-4">Заполните форму и мы свяжемся с вами в ближайшее время</p>
                             
-                            <form id="contactForm">
+                            <form id="contactForm" novalidate>
                                 <div class="row g-3">
                                     <div class="col-12">
-                                        <label for="name" class="form-label">Имя *</label>
-                                        <input type="text" class="form-control" id="name" required placeholder="Введите ваше имя">
+                                        <label for="name" class="form-label">
+                                            Имя <span class="required" aria-hidden="true">*</span>
+                                            <span class="sr-only">обязательное поле</span>
+                                        </label>
+                                        <input type="text" class="form-control" id="name" required 
+                                               aria-required="true" placeholder="Введите ваше имя">
+                                        <div class="error-message" id="name-error">Пожалуйста, введите ваше имя</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="phone" class="form-label">Телефон *</label>
-                                        <input type="tel" class="form-control" id="phone" required placeholder="+7 (XXX) XXX-XX-XX">
+                                        <label for="phone" class="form-label">
+                                            Телефон <span class="required" aria-hidden="true">*</span>
+                                            <span class="sr-only">обязательное поле</span>
+                                        </label>
+                                        <input type="tel" class="form-control" id="phone" required 
+                                               aria-required="true" placeholder="+7 (XXX) XXX-XX-XX"
+                                               pattern="\+7\s?[\(]{0,1}[0-9]{3}[\)]{0,1}\s?\d{3}[-]{0,1}\d{2}[-]{0,1}\d{2}">
+                                        <div class="error-message" id="phone-error">Пожалуйста, введите корректный номер телефона</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="email" class="form-label">Электронная почта *</label>
-                                        <input type="email" class="form-control" id="email" required placeholder="example@mail.ru">
+                                        <label for="email" class="form-label">
+                                            Электронная почта <span class="required" aria-hidden="true">*</span>
+                                            <span class="sr-only">обязательное поле</span>
+                                        </label>
+                                        <input type="email" class="form-control" id="email" required 
+                                               aria-required="true" placeholder="example@mail.ru">
+                                        <div class="error-message" id="email-error">Пожалуйста, введите корректный email</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="category" class="form-label">Категория обращения *</label>
-                                        <select class="form-select" id="category" required>
+                                        <label for="category" class="form-label">
+                                            Категория обращения <span class="required" aria-hidden="true">*</span>
+                                            <span class="sr-only">обязательное поле</span>
+                                        </label>
+                                        <select class="form-select" id="category" required aria-required="true">
                                             <option value="">Выберите категорию</option>
                                             <option value="technical">Техническая поддержка</option>
                                             <option value="commercial">Коммерческое предложение</option>
@@ -283,24 +303,31 @@
                                             <option value="suggestion">Предложение</option>
                                             <option value="other">Другое</option>
                                         </select>
+                                        <div class="error-message" id="category-error">Пожалуйста, выберите категорию</div>
                                     </div>
                                     <div class="col-12">
-                                        <label for="message" class="form-label">Текст обращения *</label>
-                                        <textarea class="form-control" id="message" rows="4" required placeholder="Опишите вашу проблему или вопрос..."></textarea>
+                                        <label for="message" class="form-label">
+                                            Текст обращения <span class="required" aria-hidden="true">*</span>
+                                            <span class="sr-only">обязательное поле</span>
+                                        </label>
+                                        <textarea class="form-control" id="message" rows="4" required 
+                                                  aria-required="true" placeholder="Опишите вашу проблему или вопрос..."></textarea>
+                                        <div class="error-message" id="message-error">Пожалуйста, введите текст обращения</div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="agreement" required>
+                                            <input class="form-check-input" type="checkbox" id="agreement" required aria-required="true">
                                             <label class="form-check-label small" for="agreement">
                                                 Я соглашаюсь с обработкой персональных данных
                                             </label>
+                                            <div class="error-message" id="agreement-error">Необходимо ваше согласие</div>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary w-100 py-2">
                                             <span class="btn-text">Отправить сообщение</span>
                                             <span class="btn-loading" style="display: none;">
-                                                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                                                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                                                 Отправка...
                                             </span>
                                         </button>
@@ -312,31 +339,17 @@
                 </div>
             </section>
 
-            <!-- Map Section -->
-            <section class="mb-5">
-                <h3 class="text-primary mb-4">Наше местоположение</h3>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">г. Москва, ул. Пушкина, д. Колотушкина</h5>
-                        <p class="card-text text-muted mb-3">Метро: Пушкинская</p>
-                        <p class="card-text">Мы находимся в центре города. Ближайшая станция метро - Пушкинская.</p>
-                        <button class="btn btn-primary" onclick="showOnMap()">
-                            <i class="bi bi-geo-alt me-1"></i>Открыть в картах
-                        </button>
-                    </div>
-                </div>
-            </section>
-
             <!-- FAQ Section -->
-            <section class="mb-5">
-                <h3 class="text-primary mb-4">Часто задаваемые вопросы</h3>
+            <section class="mb-5" aria-labelledby="faq-heading">
+                <h3 id="faq-heading" class="text-primary mb-4">Часто задаваемые вопросы</h3>
                 <div class="accordion" id="faqAccordion">
                     <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">
                                 Как быстро вы отвечаете на сообщения?
                             </button>
-                        </h2>
+                        </h4>
                         <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
                                 Мы стараемся отвечать на все сообщения в течение 1-2 часов в рабочее время. В выходные дни ответ может занять до 24 часов.
@@ -344,11 +357,12 @@
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">
                                 Можно ли посетить ваш офис?
                             </button>
-                        </h2>
+                        </h4>
                         <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
                                 Да, наш офис открыт для посещения по предварительной записи. Пожалуйста, свяжитесь с нами по телефону для согласования времени визита.
@@ -356,11 +370,12 @@
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                        <h4 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" 
+                                    data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">
                                 Какие способы оплаты вы принимаете?
                             </button>
-                        </h2>
+                        </h4>
                         <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
                                 Мы принимаем банковские карты (Visa, MasterCard, Мир), электронные деньги (ЮMoney, WebMoney) и банковские переводы.
@@ -378,9 +393,9 @@
                     <div class="col-md-6">
                         <h5 class="h6">Контактная информация</h5>
                         <ul class="list-unstyled small text-muted">
-                            <li><i class="bi bi-envelope me-2"></i>anastasiiakamyshnaia@gmail.com</li>
-                            <li><i class="bi bi-telephone me-2"></i>+7 (875) 373-95-27</li>
-                            <li><i class="bi bi-geo-alt me-2"></i>г. Москва, ул. Пушкина, д. Колотушкина</li>
+                            <li><i class="bi bi-envelope me-2" aria-hidden="true"></i>anastasiiakamyshnaia@gmail.com</li>
+                            <li><i class="bi bi-telephone me-2" aria-hidden="true"></i>+7 (875) 373-95-27</li>
+                            <li><i class="bi bi-geo-alt me-2" aria-hidden="true"></i>г. Москва, ул. Пушкина, д. Колотушкина</li>
                         </ul>
                     </div>
                     <div class="col-md-6 text-md-end">
@@ -393,7 +408,78 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Функции для контактов
+        // Улучшенная валидация формы
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const isValid = validateForm(form);
+            
+            if (isValid) {
+                submitForm(form);
+            }
+        });
+
+        function validateForm(form) {
+            let isValid = true;
+            const fields = form.querySelectorAll('input[required], select[required], textarea[required]');
+            
+            fields.forEach(field => {
+                const errorElement = document.getElementById(field.id + '-error');
+                if (!field.checkValidity()) {
+                    field.setAttribute('aria-invalid', 'true');
+                    if (errorElement) errorElement.style.display = 'block';
+                    isValid = false;
+                } else {
+                    field.setAttribute('aria-invalid', 'false');
+                    if (errorElement) errorElement.style.display = 'none';
+                }
+            });
+            
+            return isValid;
+        }
+
+        function submitForm(form) {
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            // Показываем индикатор загрузки
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            submitBtn.disabled = true;
+            
+            // Имитация отправки
+            setTimeout(() => {
+                showNotification('Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.', 'success');
+                
+                // Восстанавливаем кнопку
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+                
+                // Очищаем форму
+                form.reset();
+                form.querySelectorAll('[aria-invalid]').forEach(el => el.setAttribute('aria-invalid', 'false'));
+                form.querySelectorAll('.error-message').forEach(el => el.style.display = 'none');
+            }, 2000);
+        }
+
+        // Real-time validation
+        document.querySelectorAll('#contactForm input, #contactForm select, #contactForm textarea').forEach(field => {
+            field.addEventListener('blur', function() {
+                const errorElement = document.getElementById(this.id + '-error');
+                if (!this.checkValidity()) {
+                    this.setAttribute('aria-invalid', 'true');
+                    if (errorElement) errorElement.style.display = 'block';
+                } else {
+                    this.setAttribute('aria-invalid', 'false');
+                    if (errorElement) errorElement.style.display = 'none';
+                }
+            });
+        });
+
+        // Остальные функции остаются без изменений
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
                 showNotification('Email скопирован в буфер обмена!', 'success');
@@ -401,7 +487,7 @@
         }
 
         function showOnMap() {
-        showNotification('Открываем карту с нашим местоположением...', 'info');
+            showNotification('Открываем карту с нашим местоположением...', 'info');
         }
 
         function makeCall(phone) {
@@ -409,7 +495,6 @@
         }
 
         function showNotification(message, type = 'info') {
-            // Создаем уведомление с Bootstrap
             const alertClass = {
                 'success': 'alert-success',
                 'info': 'alert-info',
@@ -429,12 +514,11 @@
             `;
             notification.innerHTML = `
                 ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть уведомление"></button>
             `;
 
             document.body.appendChild(notification);
 
-            // Автоматическое скрытие через 4 секунды
             setTimeout(() => {
                 if (notification.parentNode) {
                     const bsAlert = new bootstrap.Alert(notification);
@@ -442,33 +526,6 @@
                 }
             }, 4000);
         }
-
-        // Обработка формы
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const btnText = submitBtn.querySelector('.btn-text');
-            const btnLoading = submitBtn.querySelector('.btn-loading');
-            
-            // Показываем индикатор загрузки
-            btnText.style.display = 'none';
-            btnLoading.style.display = 'inline';
-            submitBtn.disabled = true;
-            
-            // Имитация отправки
-            setTimeout(() => {
-                showNotification('Сообщение успешно отправлено! Мы свяжемся с вами в ближайшее время.', 'success');
-                
-                // Восстанавливаем кнопку
-                btnText.style.display = 'inline';
-                btnLoading.style.display = 'none';
-                submitBtn.disabled = false;
-                
-                // Очищаем форму
-                this.reset();
-            }, 2000);
-        });
 
         // Маска для телефона
         document.getElementById('phone').addEventListener('input', function(e) {

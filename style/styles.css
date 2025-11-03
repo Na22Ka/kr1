@@ -11,9 +11,9 @@
   
   /* Дополнительные цвета */
   --slate-blue: #28293D;
-  --lavender: #555184;
-  --pale-lavender: #B2A6BE;
-  --cream: #FEE9CE;
+  --lavender: #3a356d;
+  --pale-lavender: #6c5a8de7;
+  --cream: #4c396be6;
   --deep-lavender: #694786;
   --warm-gray: #A48680;
   --violet: #5D479A;
@@ -101,15 +101,13 @@
 }
 
 /* ===== HEADER ===== */
-/* ===== HEADER ===== */
-/* ===== HEADER ===== */
 header.bg-primary {
     background: linear-gradient(135deg, 
         var(--slate-blue) 0%, 
         var(--lavender) 25%, 
         var(--pale-lavender) 50%, 
         var(--cream) 75%, 
-        rgba(254, 233, 206, 0.9) 100%
+        rgba(63, 32, 85, 0.933) 100%
     ) !important;
     position: relative;
     overflow: hidden;
@@ -129,7 +127,7 @@ header h1 {
 }
 
 header p {
-    color: #FFFFFF !important;
+    color: white !important;
     font-weight: 500;
     position: relative;
     z-index: 2;
@@ -492,7 +490,83 @@ body.bg-light {
     box-shadow: var(--shadow-md);
 }
 
+.responsive-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Picture element поддержка */
+picture {
+    display: block;
+    width: 100%;
+}
+
+/* Retina изображения */
+.retina-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* ===== СТИЛИ ДОСТУПНОСТИ ===== */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Улучшенные стили фокуса */
+.btn:focus,
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Индикатор для скринридеров */
+.required::after {
+    content: " *";
+    color: var(--color-error);
+}
+
+/* Состояния форм */
+.form-control:invalid {
+    border-color: var(--color-error);
+}
+
+.form-control:valid {
+    border-color: var(--color-success);
+}
+
 /* Адаптивность для мобильных */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--space-sm);
+    }
+    
+    .card {
+        margin-bottom: var(--space-md);
+    }
+    
+    .navbar-nav {
+        text-align: center;
+    }
+    
+    .btn {
+        width: 100%;
+        margin-bottom: var(--space-sm);
+    }
+}
+
+
 @media (max-width: 576px) {
     .logo-img {
         width: 40px;
@@ -505,5 +579,13 @@ body.bg-light {
     
     header p {
         font-size: 0.9rem !important;
+    }
+    :root {
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+    }
+    
+    .card-body {
+        padding: var(--space-md);
     }
 }
